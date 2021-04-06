@@ -1,18 +1,19 @@
-class Box{
-    constructor(x,y,width,height){
-        var box_options ={
+class Log{
+    constructor(x,y,height,angle){
+        var log_options ={
             restitution: 1,
             friction :1,
             density : 1
         }
     
-        this.body = Bodies.rectangle(x,y,width,height,box_options);
-        this.width = width;
+        this.body = Bodies.rectangle(x,y,20,height,log_options);
+        Matter.Body.setAngle(this.body,angle); 
+        this.width = 20;
         this.height = height;
         World.add(world,this.body);
     
     }
-    boxDisplay(){
+     logDisplay(){
         push ();
         translate (this.body.position.x , this.body.position.y);
         angleMode(RADIANS);
@@ -26,4 +27,3 @@ class Box{
 
 
 }
-
