@@ -39,8 +39,8 @@ function setup(){
     log2 = new Log(810,180,300,PI/2);
     log3 = new Log(747,120,150,PI/7);
     log4 = new Log(853,120,150,-PI/7);
-    logTest = new Log(200,100,50,PI/2);
-    sling = new SlingShot(bird.body,logTest.body)
+
+    sling = new SlingShot(bird.body,{x:200 ,y: 100 });
     console.log(object);
 }
 
@@ -61,7 +61,6 @@ function draw(){
     log2.Display();
     log3.Display();
     log4.Display();
-    logTest.Display();
     sling.Display();
 
 }
