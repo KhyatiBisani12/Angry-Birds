@@ -10,9 +10,9 @@ class Ground {
     }
 
     groundDisplay(){
-        fill ("red");
+        fill (112,66,20);
         rectMode(CENTER);
-        rect(0, 0, this.width, this.height);
+        rect(this.body.position.x, this.body.position.y, this.width, this.height);
     }
 }
 
