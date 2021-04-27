@@ -18,16 +18,38 @@ class SlingShot{
         World.add(world,this.slingshot);
     
     }
+
+    fly(){
+        this.slingshot.bodyA = null;
+    }
+
     Display(){
         image(this.sling1,200, 210);
         image(this.sling2,169, 200);
-        var pointA = this.slingshot.bodyA.position;
-        var pointB = this.pointB;
-        strokeWeight(3);
-        stroke(48, 22, 8);
-        line(pointA.x,pointA.y,pointB.x-15,pointB.y-55);
-        line(pointA.x,pointA.y,pointB.x+20,pointB.y-65);
-        image(this.sling3,pointA.x-20,pointA.y+10 , 15,25);
+
+        if(this.slingshot.bodyA){
+            var pointA = this.slingshot.bodyA.position;
+            var pointB = this.pointB;
+            push ();
+            if(pointA.x<220){
+                strokeWeight(6);
+                stroke(48, 22, 8);
+                line(pointA.x,pointA.y,pointB.x-25,pointB.y+20);
+                line(pointA.x,pointA.y,pointB.x+20,pointB.y+20);
+                image(this.sling3,pointA.x-28,pointA.y-10 , 15,30);
+            }
+            else {
+                strokeWeight(3);
+                stroke(48, 22, 8);
+                line(pointA.x+15,pointA.y,pointB.x-25,pointB.y+20);
+                line(pointA.x+20,pointA.y,pointB.x+20,pointB.y+20);
+                image(this.sling3,pointA.x+20,pointA.y-10 , 15,30);
+            }
+
+            pop ();
+        }
+        
+        
         
      }
 

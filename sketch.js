@@ -32,7 +32,8 @@ function setup(){
     box5 = new Box(810,160,70,70);
     pig1 = new Pig(810,350);
     pig2 = new Pig(810,220);
-    bird = new Bird(200,100);
+
+    bird = new Bird(100,100);
     log1 = new Log(810,260,300,PI/2);
     log2 = new Log(810,180,300,PI/2);
     log3 = new Log(747,120,150,PI/7);
@@ -40,7 +41,7 @@ function setup(){
     
     platform = new Ground(150,495,300,170);
 
-    sling = new SlingShot(bird.body,{x:200 ,y: 300 });
+    sling = new SlingShot(bird.body,{x:200 ,y: 210 });
     //console.log(object);
 }
 
@@ -65,5 +66,12 @@ function draw(){
     log4.Display();
     sling.Display();
     
+}
 
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x:mouseY , y:mouseY});
+}
+
+function mouseReleased(){
+    sling.fly();
 }
