@@ -6,7 +6,7 @@ class SlingShot{
             bodyA : bodyA,  // bodyA : bird.body
             pointB : pointB,  // bodyB : log5.body
             length : 10,
-            stiffness : 0.05
+            stiffness : 0.1
         };
     
         // pointB = (x,y)
@@ -21,6 +21,10 @@ class SlingShot{
 
     fly(){
         this.slingshot.bodyA = null;
+    }
+
+    attach(body){
+        this.slingshot.bodyA = body;
     }
 
     Display(){

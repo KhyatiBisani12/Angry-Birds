@@ -14,6 +14,28 @@ var backgroundImage;
 var ground;
 var platform;
 
+// Arrays 
+/*var abc= 10;
+var abc_array = [10,20,30,40,50,"hi"];
+console.log(abc_array);
+console.log("Length is " + abc_array.length);
+
+abc_array.push("Khyati");
+console.log(abc_array);
+
+abc_array.pop();
+abc_array.pop();
+console.log(abc_array);
+
+abc_array = [];
+console.log(abc_array);
+var sub_array=[[1,2],[3,4],["Hi","Hello"],[5,6]]
+//console.log(sub_array);
+
+console.log(sub_array[0][1]);*/
+
+
+
 function preload(){
     backgroundImage = loadImage("sprites/bg.png")
 }
@@ -74,4 +96,10 @@ function mouseDragged(){
 
 function mouseReleased(){
     sling.fly();
+}
+
+function keyPressed(){
+    if(keyCode === 32){
+      sling.attach(bird.body)
+    }
 }
