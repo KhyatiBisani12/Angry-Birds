@@ -13,6 +13,7 @@ var sling;
 var backgroundImage;
 var ground;
 var platform;
+var dateTime;
 
 // Arrays 
 /*var abc= 10;
@@ -37,7 +38,9 @@ console.log(sub_array[0][1]);*/
 
 
 function preload(){
-    backgroundImage = loadImage("sprites/bg.png")
+    //backgroundImage = loadImage("sprites/bg.png")
+    //backgroundImage = loadImage("sprites/bg.png");
+    getTime();
 }
 function setup(){
     var canvas = createCanvas(1400,600);
@@ -68,7 +71,14 @@ function setup(){
 }
 
 function draw(){
-    background(backgroundImage);
+    if(backgroundImage){
+        background(backgroundImage);
+    }
+    else {
+        backgroundImage = loadImage("sprites/bg.png")
+        background(backgroundImage);
+    }
+    
     Engine.update(engine);
     // rectMode(CENTER);
     // rect(object.position.x,object.position.y,1200,20);
@@ -101,5 +111,21 @@ function mouseReleased(){
 function keyPressed(){
     if(keyCode === 32){
       sling.attach(bird.body)
+    }
+}
+
+async function getTime(){
+    var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata");
+    responseJSON = await response.json();
+    console.log(responseJSON);
+    dateTime = responseJSON.datetime;
+    // datetime : 2021-05-04T16:32
+    var hour = dateTime.slice(11,13);
+    console.log(hour);
+    if (hour >= 06 && hour <= 15 ){
+        backgroundImage = loadImage("sprites/bg.png");
+    }
+    else {
+        backgroundImage = loadImage("sprites/bg2.jpg");
     }
 }
