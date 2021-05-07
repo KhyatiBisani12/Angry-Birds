@@ -14,6 +14,7 @@ var backgroundImage;
 var ground;
 var platform;
 var dateTime;
+var score = 0;
 
 // Arrays 
 /*var abc= 10;
@@ -58,7 +59,7 @@ function setup(){
     pig1 = new Pig(810,350);
     pig2 = new Pig(810,220);
 
-    bird = new Bird(100,100);
+    bird = new Bird(200,210);
     log1 = new Log(810,260,300,PI/2);
     log2 = new Log(810,180,300,PI/2);
     log3 = new Log(747,120,150,PI/7);
@@ -70,7 +71,7 @@ function setup(){
     //console.log(object);
 }
 
-function draw(){
+function draw(){ 
     if(backgroundImage){
         background(backgroundImage);
     }
@@ -78,6 +79,11 @@ function draw(){
         backgroundImage = loadImage("sprites/bg.png")
         background(backgroundImage);
     }
+    textSize(30);
+    fill ("white");
+    text ("Score : "+ score, 1150 , 50);
+    pig1.score();
+    pig2.score();
     
     Engine.update(engine);
     // rectMode(CENTER);
@@ -98,6 +104,8 @@ function draw(){
     log4.Display();
     sling.Display();
     
+    
+    
 }
 
 function mouseDragged(){
@@ -111,6 +119,8 @@ function mouseReleased(){
 function keyPressed(){
     if(keyCode === 32){
       sling.attach(bird.body)
+      bird.trajectory = []
+      Matter.Body.setPosition(bird.body,{x:200 , y:210});
     }
 }
 

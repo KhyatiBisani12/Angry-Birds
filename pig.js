@@ -1,10 +1,16 @@
 class Pig extends BaseClass{
+
     constructor(x,y){
         super(x,y,50,50);
         this.image = loadImage('sprites/enemy.png');
         this.visibility = 255;
+        
     }
-
+    score(){
+        if(this.visibility<0 && this.visibility>-1005){
+            score++;
+        }
+    }
     Display(){
         //console.log(this.body.speed);
         if (this.body.speed < 10){
